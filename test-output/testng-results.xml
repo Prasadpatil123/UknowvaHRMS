@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-04-06T20:28:06 IST" name=" MasterSuite" finished-at="2025-04-06T20:28:57 IST" duration-ms="51289">
+    <groups>
+      <group name="">
+        <method signature="TC001_AccountLogin.verify_login()[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" name="verify_login" class="test.TC001_AccountLogin"/>
+      </group> <!--  -->
+    </groups>
+    <test started-at="2025-04-06T20:28:06 IST" name="Test" finished-at="2025-04-06T20:28:57 IST" duration-ms="51289">
+      <class name="test.TC001_AccountLogin">
+        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" started-at="2025-04-06T20:28:07 IST" name="setup" finished-at="2025-04-06T20:28:30 IST" duration-ms="23026" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[windows]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="verify_login()[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" started-at="2025-04-06T20:28:30 IST" name="verify_login" finished-at="2025-04-06T20:28:57 IST" duration-ms="27392" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verify_login -->
+        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" started-at="2025-04-06T20:28:57 IST" name="closeBrowser" finished-at="2025-04-06T20:28:57 IST" duration-ms="338" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- closeBrowser -->
+      </class> <!-- test.TC001_AccountLogin -->
+    </test> <!-- Test -->
+  </suite> <!--  MasterSuite -->
+</testng-results>

@@ -1,0 +1,7 @@
+20:22:01.615 [main] DEBUG org.testng.TestNG - suiteXmlPath: "C:\Users\PRASAD\OneDrive\Desktop\Automation Practice\UknowvaAutomation\master.xml"
+20:28:06.074 [main] DEBUG org.testng.TestNG - suiteXmlPath: "C:\Users\PRASAD\OneDrive\Desktop\Automation Practice\UknowvaAutomation\master.xml"
+20:28:06.524 [main] INFO  org.testng.internal.Utils - [TestNG] Running:
+  C:\Users\PRASAD\OneDrive\Desktop\Automation Practice\UknowvaAutomation\master.xml
+
+20:28:30.072 [main] INFO  test.TC001_AccountLogin - ******* Starting TC001_AccountLogin *******
+20:28:57.454 [main] INFO  test.TC001_AccountLogin - ******* Ending TC001_AccountLogin *******
