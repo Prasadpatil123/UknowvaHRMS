@@ -1,40 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-06T20:28:06 IST" name=" MasterSuite" finished-at="2025-04-06T20:28:57 IST" duration-ms="51289">
+  <suite started-at="2025-09-24T12:06:24 IST" name="Default suite" finished-at="2025-09-24T12:06:33 IST" duration-ms="9350">
     <groups>
-      <group name="">
-        <method signature="TC001_AccountLogin.verify_login()[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" name="verify_login" class="test.TC001_AccountLogin"/>
-      </group> <!--  -->
     </groups>
-    <test started-at="2025-04-06T20:28:06 IST" name="Test" finished-at="2025-04-06T20:28:57 IST" duration-ms="51289">
-      <class name="test.TC001_AccountLogin">
-        <test-method is-config="true" signature="setup(java.lang.String,java.lang.String)[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" started-at="2025-04-06T20:28:07 IST" name="setup" finished-at="2025-04-06T20:28:30 IST" duration-ms="23026" status="PASS">
-          <params>
-            <param index="0">
-              <value>
-                <![CDATA[windows]]>
-              </value>
-            </param>
-            <param index="1">
-              <value>
-                <![CDATA[chrome]]>
-              </value>
-            </param>
-          </params>
+    <test started-at="2025-09-24T12:06:24 IST" name="Default test" finished-at="2025-09-24T12:06:33 IST" duration-ms="9350">
+      <class name="test.TestSauceDemo">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:test.TestSauceDemo@1caa0244]" started-at="2025-09-24T12:06:24 IST" name="setUp" finished-at="2025-09-24T12:06:28 IST" duration-ms="4189" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="verify_login()[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" started-at="2025-04-06T20:28:30 IST" name="verify_login" finished-at="2025-04-06T20:28:57 IST" duration-ms="27392" status="PASS">
+        </test-method> <!-- setUp -->
+        <test-method is-config="true" signature="pageSetup()[pri:0, instance:test.TestSauceDemo@1caa0244]" started-at="2025-09-24T12:06:28 IST" name="pageSetup" finished-at="2025-09-24T12:06:28 IST" duration-ms="46" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verify_login -->
-        <test-method is-config="true" signature="closeBrowser()[pri:0, instance:test.TC001_AccountLogin@3b220bcb]" started-at="2025-04-06T20:28:57 IST" name="closeBrowser" finished-at="2025-04-06T20:28:57 IST" duration-ms="338" status="PASS">
+        </test-method> <!-- pageSetup -->
+        <test-method signature="validLoginAndCheckout()[pri:0, instance:test.TestSauceDemo@1caa0244]" started-at="2025-09-24T12:06:28 IST" name="validLoginAndCheckout" finished-at="2025-09-24T12:06:33 IST" duration-ms="5010" status="FAIL">
+          <exception class="java.lang.NullPointerException">
+            <message>
+              <![CDATA[Cannot invoke "org.openqa.selenium.SearchContext.findElement(org.openqa.selenium.By)" because "this.searchContext" is null]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException: Cannot invoke "org.openqa.selenium.SearchContext.findElement(org.openqa.selenium.By)" because "this.searchContext" is null
+at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+at jdk.proxy2/jdk.proxy2.$Proxy12.sendKeys(Unknown Source)
+at pom.LoginPage.enterUsername(LoginPage.java:26)
+at pom.LoginPage.login(LoginPage.java:48)
+at test.TestSauceDemo.validLoginAndCheckout(TestSauceDemo.java:36)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- closeBrowser -->
-      </class> <!-- test.TC001_AccountLogin -->
-    </test> <!-- Test -->
-  </suite> <!--  MasterSuite -->
+        </test-method> <!-- validLoginAndCheckout -->
+      </class> <!-- test.TestSauceDemo -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

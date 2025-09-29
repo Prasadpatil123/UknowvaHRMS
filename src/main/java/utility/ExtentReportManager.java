@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -17,47 +16,53 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import pojo.BaseClass;
-
 public class ExtentReportManager implements ITestListener{
 
 	public ExtentSparkReporter sparkReporter;
 	public ExtentReports extent;
-	public ExtentTest test;
-	
+	public ExtentTest test;	
 	String repName;
 	
 	public void onStart(ITestContext testContext)
 	{
-		String timestamp = new SimpleDateFormat("yyyyy.MM.dd.HH.mm.ss").format(new Date(0)); //time stamp
+		 String timestamp = new SimpleDateFormat("yyyyy.MM.dd.HH.mm.ss").format(new Date());	//time stamp
+		 repName = "Test-Report-" + timestamp + ".html";
+		 sparkReporter = new ExtentSparkReporter("./reports/" + repName);
 		
-		repName = "Test-Report-" + timestamp + ".html";	//report name
-		sparkReporter = new ExtentSparkReporter(".\\reports\\" + repName);	//Specify location of the report
+//		String timestamp = new SimpleDateFormat("yyyyy.MM.dd.HH.mm.ss").format(new Date(0)); //time stamp line 29
 		
-		sparkReporter.config().setDocumentTitle("Uknowva Report");	//Title of the report
-		sparkReporter.config().setReportName("Functional Testing");	//Name of the report
+//		repName = "Test-Report-" + timestamp + ".html";	//report name						//line 30
+//		sparkReporter = new ExtentSparkReporter(".\\reports\\" + repName);	//Specify location of the report	//line 31
+		
+		sparkReporter.config().setDocumentTitle("demo Report");	//Title of the report
+		sparkReporter.config().setReportName("regression Testing");	//Name of the report
 		sparkReporter.config().setTheme(Theme.DARK);
 		
 		extent = new ExtentReports();
 		extent.attachReporter(sparkReporter);
-		extent.setSystemInfo("Application", "uknowva");
+		extent.setSystemInfo("Application", "demo");
 		extent.setSystemInfo("Module", "Admin");
 		extent.setSystemInfo("Sub Module", "Admin");
 		extent.setSystemInfo("User Name", System.getProperty("user.name"));	//Current user name of system
 		extent.setSystemInfo("Environement", "QA");
 		
-		String os = testContext.getCurrentXmlTest().getParameter("os");	//capture from master,xml file
-		extent.setSystemInfo("Operating System", os);
+		//for below line
+		 extent.setSystemInfo("Operating System", System.getProperty("os.name")); // CHANGED
+		 extent.setSystemInfo("Browser", "chrome"); // CHANGED: Set here directly
+		 extent.setSystemInfo("Groups", "default"); // CHANGED: Set here directly
 		
-		String browser = testContext.getCurrentXmlTest().getParameter("browser");	//capture from master,xml file
-		extent.setSystemInfo("Browser", browser);
-		
-		List<String> includededGroups = testContext.getCurrentXmlTest().getIncludedGroups();
-		//Condition : if List is not empty it will print then value else not
-		if(!includededGroups.isEmpty())	//add all group name to the method before that it check groups available or not if not then it get add
-		{
-			extent.setSystemInfo("Groups", includededGroups.toString());
-		}		
+//		String os = testContext.getCurrentXmlTest().getParameter("os");	//capture from master,xml file
+//		extent.setSystemInfo("Operating System", os);
+//		
+//		String browser = testContext.getCurrentXmlTest().getParameter("browser");	//capture from master,xml file
+//		extent.setSystemInfo("Browser", browser);
+//		
+//		List<String> includededGroups = testContext.getCurrentXmlTest().getIncludedGroups();
+//		//Condition : if List is not empty it will print then value else not
+//		if(!includededGroups.isEmpty())	//add all group name to the method before that it check groups available or not if not then it get add
+//		{
+//			extent.setSystemInfo("Groups", includededGroups.toString());
+//		}		
 	}
 	
 	public void onTestSuccess(ITestResult result)
@@ -74,16 +79,6 @@ public class ExtentReportManager implements ITestListener{
 		
 		test.log(Status.FAIL, result.getName()+"got failed");
 		test.log(Status.INFO, result.getThrowable().getMessage());
-		
-		try
-		{
-			String imgPath = new BaseClass().captureScreenSHot(result.getName());
-			test.addScreenCaptureFromPath(imgPath);
-		}
-		catch(Exception e1)
-		{
-			e1.printStackTrace();
-		}
 	}
 	
 	public void onTestSkipped(ITestResult result)
@@ -101,5 +96,19 @@ public class ExtentReportManager implements ITestListener{
 		{
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public void onFinish(ITestContext context) {
+	    extent.flush();  // Flush all info into the report file when all tests complete
+
+	    // Optional: Open the report automatically after finishing all tests
+	    String pathOfExtentReport = System.getProperty("user.dir") + "/reports/" + repName;
+	    File extentReport = new File(pathOfExtentReport);
+	    try {
+	        Desktop.getDesktop().browse(extentReport.toURI());
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
 	}
 }
