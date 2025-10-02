@@ -69,13 +69,13 @@ public class TestSauceDemo {
      
      // Optionally validate navigation or messages here (SauceDemo behavior)
      // Since no explicit error on empty cart, test passes if no crash occurs
- }
+ //}
 
-// @AfterClass
-// public void tearDown() {
-//     if(driver != null) {
-//         driver.quit();
-//     }
-// }
-//}
+ @AfterClass
+ public void tearDown() {
+     if(driver != null) {
+         driver.quit();
+     }
+ }
+}
 
